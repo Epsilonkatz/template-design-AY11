@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit RGAA 4.1.2 — Template Design-systeme</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <h1>Non-conformités détaillées — Audit RGAA 4.1.2</h1>
+  <div class="meta">Template Design-systeme &mdash; 2026 &mdash; Laetitia Emmanuelli, ALPI</div>
+  <div class="scroll-hint" id="scrollHint" aria-label="Défiler vers le bas pour accéder au contenu de l'audit">
+    <span>Défiler</span>
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 5v14M5 13l7 7 7-7" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</header>
+
+<a href="#tab-pages" class="sr-only">Aller au contenu</a>
+
+<div class="tabs-nav" role="tablist" aria-label="Sections du rapport">
+  <button class="tab-btn active" id="btn-pages" role="tab" aria-selected="true" aria-controls="tab-pages">Par page</button>
+  <button class="tab-btn" id="btn-thematiques" role="tab" aria-selected="false" aria-controls="tab-thematiques">Par thématique</button>
+  <button class="tab-btn" id="btn-outils" role="tab" aria-selected="false" aria-controls="tab-outils">Boîte à outils</button>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Navigation dans le rapport">
+    <div id="nav-pages" class="sidebar-section active">
+      <p class="sidebar-title">Pages auditées</p>
+      <a class="nav-page" href="#page-P01">P01 — Page Connexion<span class="nav-badge ">6</span></a>
+<a class="nav-page" href="#page-P02">P02 — Page Accueil<span class="nav-badge ">7</span></a>
+    </div>
+    <div id="nav-thematiques" class="sidebar-section">
+      <p class="sidebar-title">Thématiques</p>
+      <a class="nav-page" href="#theme-images">Images<span class="nav-badge ">1</span></a>
+<a class="nav-page" href="#theme-couleurs">Couleurs<span class="nav-badge ">1</span></a>
+<a class="nav-page" href="#theme-liens">Liens<span class="nav-badge ">1</span></a>
+<a class="nav-page" href="#theme-scripts">Scripts<span class="nav-badge ">2</span></a>
+<a class="nav-page" href="#theme-navigation">Navigation<span class="nav-badge ">3</span></a>
+<a class="nav-page" href="#theme-consultation">Consultation<span class="nav-badge ">1</span></a>
+<a class="nav-page" href="#theme-présentation">Présentation<span class="nav-badge ">4</span></a>
+    </div>
+    <div class="sidebar-section active" id="nav-outils">
+        <div class="sidebar-title">Outils</div>
+  </nav>
+  <main class="main" id="main-content">
+    <section id="tab-pages" class="tab-section active" role="tabpanel" tabindex="-1" aria-labelledby="btn-pages">
+
+  <section class="page-section" id="page-P01">
+    <div class="page-header"><h2>P01 — Page Connexion</h2></div>
+    <div class="page-meta-bar"><span>Conformité : <strong><span class="score-pill high">79,3%</span></strong></span><span>NC : <strong>6</strong></span><span>Bloquantes : <strong>5</strong></span></div>
+    <div class="page-body"><div class="thematique"><h3 class="thematique-title">Images</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 1.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque image porteuse d’information a-t-elle une alternative textuelle ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;image du logo AlpiConnect (/images/login/logo_alpiconnect.png) est porteuse d&#x27;information — elle identifie le service auquel l&#x27;utilisateur se connecte. Elle possède un attribut alt=&quot;&quot; qui la désigne comme décorative, ce qui est incorrect. Un utilisateur de lecteur d&#x27;écran ne reçoit aucune information sur le service affiché.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Ajouter une alternative textuelle pertinente décrivant le logo et le service : <code>&lt;img src=&quot;/images/login/logo_alpiconnect.png&quot; alt=&quot;AlpiConnect&quot;&gt;</code>ou, si le nom du service est déjà présent dans le contexte immédiat (titre h1 ou texte adjacent), l&#x27;image peut rester décorative avec alt=&quot;&quot; à condition que l&#x27;information soit redondante — à vérifier selon le contenu final de la page.</p></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Couleurs</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 3.3</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Dans chaque page web, les couleurs utilisées dans les composants d’interface ou les éléments graphiques porteurs d’informations sont-elles suffisamment contrastées (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le contraste de l&#x27;indicateur de focus est insuffisant dans les deux modes. En mode clair (fond blanc <code>#FFFFFF</code>), la couleur de focus <code>#FFBB80</code> produit un ratio de contraste d&#x27;environ 1,79:1, très en dessous du minimum requis de 3:1 pour les composants d&#x27;interface (WCAG 1.4.11). Le même problème est constaté en mode sombre. L&#x27;information de focus est donc transmise par une couleur dont le contraste est insuffisant par rapport à son arrière-plan.</p></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Présentation de l&#x27;information</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.3</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, l’information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Sans feuille de style, le logo AlpiConnect (/images/login/logo_alpiconnect.png) apparaît après le bouton &quot;Se connecter&quot; dans l&#x27;ordre de lecture du DOM. L&#x27;identité visuelle du service est présentée après l&#x27;action principale, ce qui crée un ordre de lecture incohérent pour les utilisateurs naviguant sans CSS.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Réordonner les éléments dans le DOM pour que le logo précède le bouton &quot;Se connecter&quot;. Le CSS peut ensuite gérer l&#x27;affichage visuel indépendamment de l&#x27;ordre du code source. Dans le HTML, déplacer le bloc <code>&lt;div class=&quot;login-card-logo&quot;&gt;</code>avant le bloc <code>&lt;div class=&quot;btn-connect-wrapper&quot;&gt;</code>.</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>L&#x27;ordre des éléments dans le DOM doit être défini et validé dès la phase de conception du design system, indépendamment du rendu CSS. L&#x27;ordre de lecture sans CSS doit refléter la hiérarchie logique de l&#x27;information pour tous les utilisateurs, notamment ceux utilisant un lecteur d&#x27;écran ou naviguant au clavier.</p></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.7</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;indicateur de focus n&#x27;est pas suffisamment visible dans les deux modes. En mode clair, la couleur <code>#FFBB80</code> sur fond blanc (<code>#FFFFFF</code>) produit un ratio de contraste d&#x27;environ 1,79:1, insuffisant pour permettre à un utilisateur naviguant au clavier de repérer l&#x27;élément focalisé. Le même défaut est constaté en mode sombre. La prise de focus n&#x27;est donc pas perceptible de manière fiable pour l&#x27;ensemble des éléments interactifs de la page.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Choisir une couleur de focus offrant un ratio d&#x27;au moins 3:1 sur fond blanc en mode clair, et au moins 3:1 sur le fond correspondant en mode sombre. Couleur retenue : <code>#C05C00</code> (ratio ~4,6:1 sur blanc <code>#FFFFFF</code> — marge suffisante au-dessus du seuil). Implémenter via CSS custom properties pour couvrir les deux modes : :root { --focus-color: <code>#C05C00</code>; } [data-theme=&quot;dark&quot;] { --focus-color: <code>#FFD580</code>; } *:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }</p></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Navigation</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.1</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers) ?</span>
+            <span class="badge-gravite mineure">Mineure</span>
+
+            
+          </div>
+          <div class="nc-body"></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.6</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Les zones de regroupement de contenus présentes dans plusieurs pages web (zones d’en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Deux non-conformités sur ce critère :</p><ol><li>Le lien d&#x27;évitement &quot;Aller à la navigation&quot; pointe vers l&#x27;ancre #sidebar qui n&#x27;existe pas dans le DOM.</li><li>Aucune zone <code>&lt;nav&gt;</code> ou <code>role=&quot;navigation&quot;</code> n&#x27;est définie dans le template, rendant impossible l&#x27;atteinte programmatique d&#x27;une zone de navigation.</li></ol></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><ol><li>Supprimer le lien d&#x27;évitement #sidebar ou créer l&#x27;élément cible correspondant dans le DOM avec <code>id=&quot;sidebar&quot;</code>.</li><li>Envelopper la navigation principale dans un élément <code>&lt;nav aria-label=&quot;Navigation principale&quot;&gt;</code> ou ajouter <code>role=&quot;navigation&quot;</code> avec un aria-label pertinent sur le conteneur concerné.</li></ol></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Ce template étant une page de connexion, l&#x27;absence de navigation principale est attendue. Pour les pages internes (post-connexion), s&#x27;assurer que chaque zone (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) est correctement balisée et que les skip-links pointent vers des ancres existantes.</p></div></div></div>
+        </div></div></div>
+  </section>
+
+  <section class="page-section" id="page-P02">
+    <div class="page-header"><h2>P02 — Page Accueil</h2></div>
+    <div class="page-meta-bar"><span>Conformité : <strong><span class="score-pill high">79,4%</span></strong></span><span>NC : <strong>7</strong></span><span>Bloquantes : <strong>5</strong></span><span>Moyennes : <strong>1</strong></span></div>
+    <div class="page-body"><div class="thematique"><h3 class="thematique-title">Liens</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 6.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque lien est-il explicite (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le lien pointant vers https://www.alpi40.fr/accessibilite porte un aria-label &quot;RGPD (nouvelle fenêtre)&quot; qui ne correspond pas à sa destination réelle. La page cible traite de l&#x27;accessibilité, pas du RGPD. Cet intitulé trompeur ne permet pas à l&#x27;utilisateur de comprendre la destination du lien.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Corriger l&#x27;aria-label pour refléter la destination réelle : <code>aria-label=&quot;Accessibilité (nouvelle fenêtre)&quot;</code>. Si la page cible traite effectivement du RGPD, corriger l&#x27;URL en conséquence.</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Le lien &quot;Déconnexion&quot; (href=&quot;/login&quot;) est conforme RGAA — intitulé explicite, 6.1 et 6.2 respectés. Cependant, si la déconnexion est gérée par une action POST avec token CSRF (cas standard sous Symfony), un <code>&lt;a&gt;</code> est sémantiquement incorrect et potentiellement non sécurisé. Recommandation : confirmer le comportement serveur avec les développeurs. Si la déconnexion est bien une action POST, remplacer par : <code>&lt;form action=&quot;/logout&quot; method=&quot;post&quot;&gt;</code><code>&lt;input type=&quot;hidden&quot; name=&quot;_csrf_token&quot; value=&quot;{{ csrf_token(&#x27;logout&#x27;) }}&quot;&gt;</code><code>&lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;</code>Déconnexion<code>&lt;/button&gt;</code><code>&lt;/form&gt;</code></p></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Scripts</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 7.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque script est-il, si nécessaire, compatible avec les technologies d’assistance ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le bouton de changement de thème (<code>id=&quot;themeToggle&quot;</code>) ne restitue pas son état courant aux technologies d&#x27;assistance. L&#x27;aria-label est statique (&quot;Changer le thème&quot;) : l&#x27;utilisateur n&#x27;entend jamais quel thème est actuellement actif, ni lors de la prise de focus ni après activation. L&#x27;attribut aria-pressed est absent, privant le lecteur d&#x27;écran de l&#x27;information d&#x27;état (activé/non activé). L&#x27;icône Phosphor (<code>&lt;i&gt;</code>) ne porte pas <code>aria-hidden=&quot;true&quot;</code>, ce qui peut entraîner une vocalisation parasite du contenu généré par la police d&#x27;icônes.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><ol><li>Ajouter aria-pressed et un aria-label dynamique reflétant l&#x27;action à venir selon le thème courant.</li><li>Ajouter <code>aria-hidden=&quot;true&quot;</code> sur l&#x27;icône. HTML initial : <code>&lt;button class=&quot;btn-theme-toggle&quot; id=&quot;themeToggle&quot; aria-label=&quot;Activer le thème sombre&quot; aria-pressed=&quot;false&quot;&gt;</code><code>&lt;i class=&quot;ph ph-sun&quot; id=&quot;themeIcon&quot; aria-hidden=&quot;true&quot;&gt;</code><code>&lt;/i&gt;</code><code>&lt;/button&gt;</code> JS — modifier la fonction applyTheme() : function applyTheme(theme) { html.setAttribute(&quot;data-theme&quot;, theme); const isDark = theme === &quot;dark&quot;; icon.className = isDark ? &quot;ph ph-moon&quot; : &quot;ph ph-sun&quot;; themeBtn.setAttribute(&quot;aria-pressed&quot;, isDark ? &quot;true&quot; : &quot;false&quot;); themeBtn.setAttribute(&quot;aria-label&quot;, isDark ? &quot;Activer le thème clair&quot; : &quot;Activer le thème sombre&quot;); currentTheme = theme; } Résultat : au chargement en thème clair, le lecteur d&#x27;écran annonce &quot;Activer le thème sombre, bouton non activé&quot;. Après bascule, il annonce &quot;Activer le thème clair, bouton activé&quot;.</li></ol></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 7.3</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>À l&#x27;activation du bouton burger, le menu latéral s&#x27;ouvre mais le focus reste sur le bouton burger. L&#x27;utilisateur naviguant au clavier ou avec un lecteur d&#x27;écran n&#x27;est pas repositionné sur le premier élément de la navigation, rendant l&#x27;accès au contenu du menu fastidieux.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Déplacer programmatiquement le focus vers le premier élément interactif de la sidebar à l&#x27;ouverture du menu, et le renvoyer sur le bouton burger à la fermeture. Dans la fonction toggleSidebar(), ajouter après l&#x27;ouverture :</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><div class="code-block"><div class="code-block-label">Exemple de code</div><pre style="white-space:pre-wrap;word-break:break-word">if (isOpen) {
+  const firstLink = sidebar.querySelector(&#x27;a, button&#x27;);
+  if (firstLink) firstLink.focus();
+} else {
+  btn.focus();
+}</pre></div></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Présentation de l&#x27;information</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.2</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, le contenu visible porteur d’information reste-t-il présent lorsque les feuilles de styles sont désactivées ?</span>
+            <span class="badge-gravite moyenne">Moyenne</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Sans feuille de style, le bouton burger (<code>&lt;button id=&quot;burgerBtn&quot;&gt;</code>) apparaît visuellement vide. Il ne contient qu&#x27;un SVG inline qui ne s&#x27;affiche plus correctement sans CSS. Un utilisateur voyant naviguant sans CSS ne peut pas identifier la fonction de ce bouton. Le nom accessible <code>aria-label=&quot;Ouvrir le menu&quot;</code> est bien restitué aux technologies d&#x27;assistance mais n&#x27;est pas visible dans le contenu de la page.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Ajouter un texte masqué visuellement dans le DOM via une classe sr-only (visually-hidden), visible uniquement sans CSS : &lt;button</p><div class="code-block"><div class="code-block-label">Exemple de code</div><pre style="white-space:pre-wrap;word-break:break-word">class=&quot;burger-btn&quot;
+  onclick=&quot;toggleSidebar()&quot;
+  aria-label=&quot;Ouvrir le menu&quot;
+  aria-expanded=&quot;false&quot;
+  id=&quot;burgerBtn&quot;
+&gt;
+  &lt;svg ...&gt;&lt;/svg&gt;
+  &lt;span class=&quot;sr-only&quot;&gt;Ouvrir le menu&lt;/span&gt;
+&lt;/button&gt;
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}</pre></div></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Le sr-only masque le texte visuellement avec CSS — donc avec CSS activé, l&#x27;utilisateur ne le voit pas. Sans CSS, la règle sr-only ne s&#x27;applique plus et le texte &quot;Ouvrir le menu&quot; devient visible dans le bouton.</p></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.7</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;indicateur de focus n&#x27;est pas suffisamment visible dans les deux modes. En mode clair, la couleur <code>#FFBB80</code> sur fond blanc (<code>#FFFFFF</code>) produit un ratio de contraste d&#x27;environ 1,79:1, insuffisant pour permettre à un utilisateur naviguant au clavier de repérer l&#x27;élément focalisé. Le même défaut est constaté en mode sombre. La prise de focus n&#x27;est donc pas perceptible de manière fiable pour l&#x27;ensemble des éléments interactifs de la page. La sidebar n&#x27;est pas visible lorsqu&#x27;on y accède via le skip-link &quot;Aller à la navigation&quot; sur mobile ou en vue réduite. Les éléments reçoivent le focus et sont tabulables mais restent hors de l&#x27;écran, rendant la navigation impossible pour un utilisateur voyant naviguant au clavier.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Choisir une couleur de focus offrant un ratio d&#x27;au moins 3:1 sur fond blanc en mode clair, et au moins 3:1 sur le fond correspondant en mode sombre. Couleur retenue : <code>#C05C00</code> (ratio ~4,6:1 sur blanc <code>#FFFFFF</code> — marge suffisante au-dessus du seuil). Implémenter via CSS custom properties pour couvrir les deux modes : :root { --focus-color: <code>#C05C00</code>; } [data-theme=&quot;dark&quot;] { --focus-color: <code>#FFD580</code>; } *:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; } L&#x27;activation du skip-link #sidebar, déclencher programmatiquement l&#x27;ouverture de la sidebar si elle est masquée. Exemple : dans le gestionnaire du skip-link, appeler toggleSidebar() si la sidebar ne possède pas la classe open au moment de la navigation vers l&#x27;ancre</p></div></div></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Navigation</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.1</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers) ?</span>
+            <span class="badge-gravite mineure">Mineure</span>
+
+            
+          </div>
+          <div class="nc-body"></div>
+        </div></div><div class="thematique"><h3 class="thematique-title">Consultation</h3>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 13.11</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, les actions déclenchées au moyen d’un dispositif de pointage sur un point unique de l’écran peuvent-elles faire l’objet d’une annulation (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le <code>&lt;div id=&quot;sidebarOverlay&quot;&gt;</code> déclenche la fermeture du menu via onclick=&quot;closeSidebar()&quot;. Cette action sur pointage en point unique ne dispose pas de mécanisme d&#x27;annulation — il n&#x27;est pas possible de glisser hors de la cible pour annuler l&#x27;action avant de relâcher le pointeur.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Remplacer le gestionnaire onclick par un gestionnaire sur l&#x27;événement pointerup avec vérification que le pointeur n&#x27;a pas quitté la cible, ou utiliser un <code>&lt;button&gt;</code> natif qui gère nativement l&#x27;annulation par glissement hors de la cible. Exemple : remplacer onclick=&quot;closeSidebar()&quot; par un écouteur pointerup vérifiant event.target === overlay avant d&#x27;exécuter la fermeture.</p></div></div></div>
+        </div></div></div>
+  </section>
+</section>
+    <section id="tab-thematiques" class="tab-section" role="tabpanel" tabindex="-1" aria-labelledby="btn-thematiques">
+
+  <section class="theme-section" id="theme-images">
+    <div class="theme-header"><h2>Images</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 1.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque image porteuse d’information a-t-elle une alternative textuelle ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;image du logo AlpiConnect (/images/login/logo_alpiconnect.png) est porteuse d&#x27;information — elle identifie le service auquel l&#x27;utilisateur se connecte. Elle possède un attribut alt=&quot;&quot; qui la désigne comme décorative, ce qui est incorrect. Un utilisateur de lecteur d&#x27;écran ne reçoit aucune information sur le service affiché.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Ajouter une alternative textuelle pertinente décrivant le logo et le service : <code>&lt;img src=&quot;/images/login/logo_alpiconnect.png&quot; alt=&quot;AlpiConnect&quot;&gt;</code>ou, si le nom du service est déjà présent dans le contexte immédiat (titre h1 ou texte adjacent), l&#x27;image peut rester décorative avec alt=&quot;&quot; à condition que l&#x27;information soit redondante — à vérifier selon le contenu final de la page.</p></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-couleurs">
+    <div class="theme-header"><h2>Couleurs</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 3.3</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Dans chaque page web, les couleurs utilisées dans les composants d’interface ou les éléments graphiques porteurs d’informations sont-elles suffisamment contrastées (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le contraste de l&#x27;indicateur de focus est insuffisant dans les deux modes. En mode clair (fond blanc <code>#FFFFFF</code>), la couleur de focus <code>#FFBB80</code> produit un ratio de contraste d&#x27;environ 1,79:1, très en dessous du minimum requis de 3:1 pour les composants d&#x27;interface (WCAG 1.4.11). Le même problème est constaté en mode sombre. L&#x27;information de focus est donc transmise par une couleur dont le contraste est insuffisant par rapport à son arrière-plan.</p></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-liens">
+    <div class="theme-header"><h2>Liens</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 6.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque lien est-il explicite (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le lien pointant vers https://www.alpi40.fr/accessibilite porte un aria-label &quot;RGPD (nouvelle fenêtre)&quot; qui ne correspond pas à sa destination réelle. La page cible traite de l&#x27;accessibilité, pas du RGPD. Cet intitulé trompeur ne permet pas à l&#x27;utilisateur de comprendre la destination du lien.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Corriger l&#x27;aria-label pour refléter la destination réelle : <code>aria-label=&quot;Accessibilité (nouvelle fenêtre)&quot;</code>. Si la page cible traite effectivement du RGPD, corriger l&#x27;URL en conséquence.</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Le lien &quot;Déconnexion&quot; (href=&quot;/login&quot;) est conforme RGAA — intitulé explicite, 6.1 et 6.2 respectés. Cependant, si la déconnexion est gérée par une action POST avec token CSRF (cas standard sous Symfony), un <code>&lt;a&gt;</code> est sémantiquement incorrect et potentiellement non sécurisé. Recommandation : confirmer le comportement serveur avec les développeurs. Si la déconnexion est bien une action POST, remplacer par : <code>&lt;form action=&quot;/logout&quot; method=&quot;post&quot;&gt;</code><code>&lt;input type=&quot;hidden&quot; name=&quot;_csrf_token&quot; value=&quot;{{ csrf_token(&#x27;logout&#x27;) }}&quot;&gt;</code><code>&lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;</code>Déconnexion<code>&lt;/button&gt;</code><code>&lt;/form&gt;</code></p></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-scripts">
+    <div class="theme-header"><h2>Scripts</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 7.1</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque script est-il, si nécessaire, compatible avec les technologies d’assistance ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le bouton de changement de thème (<code>id=&quot;themeToggle&quot;</code>) ne restitue pas son état courant aux technologies d&#x27;assistance. L&#x27;aria-label est statique (&quot;Changer le thème&quot;) : l&#x27;utilisateur n&#x27;entend jamais quel thème est actuellement actif, ni lors de la prise de focus ni après activation. L&#x27;attribut aria-pressed est absent, privant le lecteur d&#x27;écran de l&#x27;information d&#x27;état (activé/non activé). L&#x27;icône Phosphor (<code>&lt;i&gt;</code>) ne porte pas <code>aria-hidden=&quot;true&quot;</code>, ce qui peut entraîner une vocalisation parasite du contenu généré par la police d&#x27;icônes.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><ol><li>Ajouter aria-pressed et un aria-label dynamique reflétant l&#x27;action à venir selon le thème courant.</li><li>Ajouter <code>aria-hidden=&quot;true&quot;</code> sur l&#x27;icône. HTML initial : <code>&lt;button class=&quot;btn-theme-toggle&quot; id=&quot;themeToggle&quot; aria-label=&quot;Activer le thème sombre&quot; aria-pressed=&quot;false&quot;&gt;</code><code>&lt;i class=&quot;ph ph-sun&quot; id=&quot;themeIcon&quot; aria-hidden=&quot;true&quot;&gt;</code><code>&lt;/i&gt;</code><code>&lt;/button&gt;</code> JS — modifier la fonction applyTheme() : function applyTheme(theme) { html.setAttribute(&quot;data-theme&quot;, theme); const isDark = theme === &quot;dark&quot;; icon.className = isDark ? &quot;ph ph-moon&quot; : &quot;ph ph-sun&quot;; themeBtn.setAttribute(&quot;aria-pressed&quot;, isDark ? &quot;true&quot; : &quot;false&quot;); themeBtn.setAttribute(&quot;aria-label&quot;, isDark ? &quot;Activer le thème clair&quot; : &quot;Activer le thème sombre&quot;); currentTheme = theme; } Résultat : au chargement en thème clair, le lecteur d&#x27;écran annonce &quot;Activer le thème sombre, bouton non activé&quot;. Après bascule, il annonce &quot;Activer le thème clair, bouton activé&quot;.</li></ol></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 7.3</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>À l&#x27;activation du bouton burger, le menu latéral s&#x27;ouvre mais le focus reste sur le bouton burger. L&#x27;utilisateur naviguant au clavier ou avec un lecteur d&#x27;écran n&#x27;est pas repositionné sur le premier élément de la navigation, rendant l&#x27;accès au contenu du menu fastidieux.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Déplacer programmatiquement le focus vers le premier élément interactif de la sidebar à l&#x27;ouverture du menu, et le renvoyer sur le bouton burger à la fermeture. Dans la fonction toggleSidebar(), ajouter après l&#x27;ouverture :</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><div class="code-block"><div class="code-block-label">Exemple de code</div><pre style="white-space:pre-wrap;word-break:break-word">if (isOpen) {
+  const firstLink = sidebar.querySelector(&#x27;a, button&#x27;);
+  if (firstLink) firstLink.focus();
+} else {
+  btn.focus();
+}</pre></div></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-navigation">
+    <div class="theme-header"><h2>Navigation</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.1</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers) ?</span>
+            <span class="badge-gravite mineure">Mineure</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.1</span>
+            <span class="nc-niveau">AA</span>
+            <span class="nc-title">Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers) ?</span>
+            <span class="badge-gravite mineure">Mineure</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 12.6</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Les zones de regroupement de contenus présentes dans plusieurs pages web (zones d’en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Deux non-conformités sur ce critère :</p><ol><li>Le lien d&#x27;évitement &quot;Aller à la navigation&quot; pointe vers l&#x27;ancre #sidebar qui n&#x27;existe pas dans le DOM.</li><li>Aucune zone <code>&lt;nav&gt;</code> ou <code>role=&quot;navigation&quot;</code> n&#x27;est définie dans le template, rendant impossible l&#x27;atteinte programmatique d&#x27;une zone de navigation.</li></ol></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><ol><li>Supprimer le lien d&#x27;évitement #sidebar ou créer l&#x27;élément cible correspondant dans le DOM avec <code>id=&quot;sidebar&quot;</code>.</li><li>Envelopper la navigation principale dans un élément <code>&lt;nav aria-label=&quot;Navigation principale&quot;&gt;</code> ou ajouter <code>role=&quot;navigation&quot;</code> avec un aria-label pertinent sur le conteneur concerné.</li></ol></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Ce template étant une page de connexion, l&#x27;absence de navigation principale est attendue. Pour les pages internes (post-connexion), s&#x27;assurer que chaque zone (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) est correctement balisée et que les skip-links pointent vers des ancres existantes.</p></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-consultation">
+    <div class="theme-header"><h2>Consultation</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 13.11</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, les actions déclenchées au moyen d’un dispositif de pointage sur un point unique de l’écran peuvent-elles faire l’objet d’une annulation (hors cas particuliers) ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Le <code>&lt;div id=&quot;sidebarOverlay&quot;&gt;</code> déclenche la fermeture du menu via onclick=&quot;closeSidebar()&quot;. Cette action sur pointage en point unique ne dispose pas de mécanisme d&#x27;annulation — il n&#x27;est pas possible de glisser hors de la cible pour annuler l&#x27;action avant de relâcher le pointeur.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Remplacer le gestionnaire onclick par un gestionnaire sur l&#x27;événement pointerup avec vérification que le pointeur n&#x27;a pas quitté la cible, ou utiliser un <code>&lt;button&gt;</code> natif qui gère nativement l&#x27;annulation par glissement hors de la cible. Exemple : remplacer onclick=&quot;closeSidebar()&quot; par un écouteur pointerup vérifiant event.target === overlay avant d&#x27;exécuter la fermeture.</p></div></div></div>
+        </div></div>
+  </section>
+
+  <section class="theme-section" id="theme-pr-sentation">
+    <div class="theme-header"><h2>Présentation</h2></div>
+    <div class="theme-body">
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.2</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, le contenu visible porteur d’information reste-t-il présent lorsque les feuilles de styles sont désactivées ?</span>
+            <span class="badge-gravite moyenne">Moyenne</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Sans feuille de style, le bouton burger (<code>&lt;button id=&quot;burgerBtn&quot;&gt;</code>) apparaît visuellement vide. Il ne contient qu&#x27;un SVG inline qui ne s&#x27;affiche plus correctement sans CSS. Un utilisateur voyant naviguant sans CSS ne peut pas identifier la fonction de ce bouton. Le nom accessible <code>aria-label=&quot;Ouvrir le menu&quot;</code> est bien restitué aux technologies d&#x27;assistance mais n&#x27;est pas visible dans le contenu de la page.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Ajouter un texte masqué visuellement dans le DOM via une classe sr-only (visually-hidden), visible uniquement sans CSS : &lt;button</p><div class="code-block"><div class="code-block-label">Exemple de code</div><pre style="white-space:pre-wrap;word-break:break-word">class=&quot;burger-btn&quot;
+  onclick=&quot;toggleSidebar()&quot;
+  aria-label=&quot;Ouvrir le menu&quot;
+  aria-expanded=&quot;false&quot;
+  id=&quot;burgerBtn&quot;
+&gt;
+  &lt;svg ...&gt;&lt;/svg&gt;
+  &lt;span class=&quot;sr-only&quot;&gt;Ouvrir le menu&lt;/span&gt;
+&lt;/button&gt;
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}</pre></div></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>Le sr-only masque le texte visuellement avec CSS — donc avec CSS activé, l&#x27;utilisateur ne le voit pas. Sans CSS, la règle sr-only ne s&#x27;applique plus et le texte &quot;Ouvrir le menu&quot; devient visible dans le bouton.</p></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.3</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, l’information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>Sans feuille de style, le logo AlpiConnect (/images/login/logo_alpiconnect.png) apparaît après le bouton &quot;Se connecter&quot; dans l&#x27;ordre de lecture du DOM. L&#x27;identité visuelle du service est présentée après l&#x27;action principale, ce qui crée un ordre de lecture incohérent pour les utilisateurs naviguant sans CSS.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Réordonner les éléments dans le DOM pour que le logo précède le bouton &quot;Se connecter&quot;. Le CSS peut ensuite gérer l&#x27;affichage visuel indépendamment de l&#x27;ordre du code source. Dans le HTML, déplacer le bloc <code>&lt;div class=&quot;login-card-logo&quot;&gt;</code>avant le bloc <code>&lt;div class=&quot;btn-connect-wrapper&quot;&gt;</code>.</p></div></div><div><p class="nc-section-label">Commentaires</p><div class="nc-section-content"><p>L&#x27;ordre des éléments dans le DOM doit être défini et validé dès la phase de conception du design system, indépendamment du rendu CSS. L&#x27;ordre de lecture sans CSS doit refléter la hiérarchie logique de l&#x27;information pour tous les utilisateurs, notamment ceux utilisant un lecteur d&#x27;écran ou naviguant au clavier.</p></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.7</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P01</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;indicateur de focus n&#x27;est pas suffisamment visible dans les deux modes. En mode clair, la couleur <code>#FFBB80</code> sur fond blanc (<code>#FFFFFF</code>) produit un ratio de contraste d&#x27;environ 1,79:1, insuffisant pour permettre à un utilisateur naviguant au clavier de repérer l&#x27;élément focalisé. Le même défaut est constaté en mode sombre. La prise de focus n&#x27;est donc pas perceptible de manière fiable pour l&#x27;ensemble des éléments interactifs de la page.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Choisir une couleur de focus offrant un ratio d&#x27;au moins 3:1 sur fond blanc en mode clair, et au moins 3:1 sur le fond correspondant en mode sombre. Couleur retenue : <code>#C05C00</code> (ratio ~4,6:1 sur blanc <code>#FFFFFF</code> — marge suffisante au-dessus du seuil). Implémenter via CSS custom properties pour couvrir les deux modes : :root { --focus-color: <code>#C05C00</code>; } [data-theme=&quot;dark&quot;] { --focus-color: <code>#FFD580</code>; } *:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }</p></div></div></div>
+        </div>
+        <div class="nc-block">
+          <div class="nc-head">
+            <span class="nc-critere">Critère 10.7</span>
+            <span class="nc-niveau">A</span>
+            <span class="nc-title">Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ?</span>
+            <span class="badge-gravite bloquante">Bloquante</span>
+
+            <span class="transversal-note">P02</span>
+          </div>
+          <div class="nc-body"><div><p class="nc-section-label">Constat</p><div class="nc-section-content"><p>L&#x27;indicateur de focus n&#x27;est pas suffisamment visible dans les deux modes. En mode clair, la couleur <code>#FFBB80</code> sur fond blanc (<code>#FFFFFF</code>) produit un ratio de contraste d&#x27;environ 1,79:1, insuffisant pour permettre à un utilisateur naviguant au clavier de repérer l&#x27;élément focalisé. Le même défaut est constaté en mode sombre. La prise de focus n&#x27;est donc pas perceptible de manière fiable pour l&#x27;ensemble des éléments interactifs de la page. La sidebar n&#x27;est pas visible lorsqu&#x27;on y accède via le skip-link &quot;Aller à la navigation&quot; sur mobile ou en vue réduite. Les éléments reçoivent le focus et sont tabulables mais restent hors de l&#x27;écran, rendant la navigation impossible pour un utilisateur voyant naviguant au clavier.</p></div></div><div><p class="nc-section-label">Propositions de correction</p><div class="nc-section-content"><p>Choisir une couleur de focus offrant un ratio d&#x27;au moins 3:1 sur fond blanc en mode clair, et au moins 3:1 sur le fond correspondant en mode sombre. Couleur retenue : <code>#C05C00</code> (ratio ~4,6:1 sur blanc <code>#FFFFFF</code> — marge suffisante au-dessus du seuil). Implémenter via CSS custom properties pour couvrir les deux modes : :root { --focus-color: <code>#C05C00</code>; } [data-theme=&quot;dark&quot;] { --focus-color: <code>#FFD580</code>; } *:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; } L&#x27;activation du skip-link #sidebar, déclencher programmatiquement l&#x27;ouverture de la sidebar si elle est masquée. Exemple : dans le gestionnaire du skip-link, appeler toggleSidebar() si la sidebar ne possède pas la classe open au moment de la navigation vers l&#x27;ancre</p></div></div></div>
+        </div></div>
+  </section>
+</section>
+  </main>
+</div>
+
+<div id="tab-outils" class="tab-section" role="tabpanel" tabindex="0" aria-labelledby="btn-outils">
+  <div class="layout-inner">
+    <nav class="sidebar" aria-label="Navigation boîte à outils">
+      <div class="sidebar-section active" id="nav-outils">
+        <div class="sidebar-title">Outils</div>
+        <a href="#tk-th11" class="nav-page">Thématique 11 — Formulaires</a>
+        <a href="#tk-aria" class="nav-page">Les attributs ARIA</a>
+        <a href="#tk-ressources" class="nav-page">Ressources utiles</a>
+      </div>
+    </nav>
+    <main class="main" id="main-outils">
+
+<div class="toolkit-section" id="tk-th11">
+  <div class="toolkit-header"><h2>Thématique 11 — Formulaires</h2></div>
+  <div class="toolkit-body">
+
+    <div class="toolkit-subsection">
+      <h3>Champs obligatoires et gestion des erreurs</h3>
+
+      <h4>Champs obligatoires</h4>
+      <p>Les champs obligatoires doivent être indiqués de manière nominative ou disposer de l'un des attributs suivants :</p>
+      <ul>
+        <li><span class="aria-tag">aria-required="true"</span></li>
+        <li><span class="aria-tag">required</span></li>
+      </ul>
+
+      <h4>Indication visuelle</h4>
+      <p>Si les champs obligatoires ne sont pas indiqués nominativement, il faut prévoir une indication visuelle explicite dans l'étiquette du champ ou un texte associé via <span class="aria-tag">aria-describedby</span>.</p>
+      <p>Un astérisque seul sans définition n'est pas suffisant. Il faut définir l'astérisque avant le premier champ obligatoire :</p>
+      <div class="code-block">
+        <div class="code-block-label after">Exemple conforme</div>
+        <pre>&lt;p&gt;* champ obligatoire&lt;/p&gt;</pre>
+      </div>
+    </div>
+
+    <div class="toolkit-subsection">
+      <h3>Messages d'erreur et gestion du focus</h3>
+
+      <h4>Rédiger un message d'erreur utile</h4>
+      <p>Un bon message d'erreur dit à l'utilisateur <strong>ce qui ne va pas</strong> et <strong>comment corriger</strong>. Il ne répète pas le label du champ et n'utilise pas de jargon technique.</p>
+      <ul>
+        <li><strong>Champ vide :</strong> « Le prénom est obligatoire. » — pas « Valeur manquante. »</li>
+        <li><strong>Format incorrect :</strong> « Saisissez une adresse email valide, par exemple nom@domaine.fr. » — pas « Format invalide. »</li>
+        <li><strong>Longueur insuffisante :</strong> « Le message doit contenir au moins 10 caractères. » — pas « Trop court. »</li>
+      </ul>
+
+      <h4>Structure HTML d'un champ avec erreur</h4>
+      <div class="code-block">
+        <div class="code-block-label before">Avant soumission (état normal)</div>
+        <pre>&lt;label for="email"&gt;Courriel &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input id="email" type="email" autocomplete="email"
+       required aria-required="true"&gt;
+&lt;p id="email-error" role="alert" class="error-msg" hidden&gt;&lt;/p&gt;</pre>
+      </div>
+      <div class="code-block">
+        <div class="code-block-label after">Après soumission (état erreur)</div>
+        <pre>&lt;label for="email"&gt;Courriel &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input id="email" type="email" autocomplete="email"
+       required aria-required="true"
+       aria-invalid="true"
+       aria-describedby="email-error"&gt;
+&lt;p id="email-error" role="alert" class="error-msg"&gt;
+  Saisissez une adresse email valide, par exemple nom@domaine.fr.
+&lt;/p&gt;</pre>
+      </div>
+
+      <h4>JavaScript — validation à la soumission avec gestion du focus</h4>
+      <p>Après soumission avec erreurs, le focus est déplacé sur le premier champ en erreur — pas de résumé global.</p>
+      <div class="code-block">
+        <div class="code-block-label after">Exemple complet</div>
+        <pre>const validationRules = {
+  firstName: {
+    validate: val =&gt; val.trim().length &gt; 0,
+    message:  "Le prénom est obligatoire."
+  },
+  email: {
+    validate: val =&gt; /^[^@]+@[^@]+\.[^@]+$/.test(val),
+    message:  "Saisissez une adresse email valide, par exemple nom@domaine.fr."
+  },
+  message: {
+    validate: val =&gt; val.trim().length &gt;= 10,
+    message:  "Le message doit contenir au moins 10 caractères."
+  }
+};
+
+function setFieldError(fieldId, message) {
+  const field   = document.getElementById(fieldId);
+  const errorEl = document.getElementById(fieldId + "-error");
+  field.setAttribute("aria-invalid", "true");
+  field.setAttribute("aria-describedby", fieldId + "-error");
+  errorEl.textContent = message;
+  errorEl.removeAttribute("hidden");
+}
+
+function clearFieldError(fieldId) {
+  const field   = document.getElementById(fieldId);
+  const errorEl = document.getElementById(fieldId + "-error");
+  field.removeAttribute("aria-invalid");
+  field.removeAttribute("aria-describedby");
+  errorEl.textContent = "";
+  errorEl.setAttribute("hidden", "");
+}
+
+function validateForm(e) {
+  e.preventDefault();
+  let firstErrorId = null;
+
+  for (const [fieldId, rule] of Object.entries(validationRules)) {
+    const field = document.getElementById(fieldId);
+    if (!rule.validate(field.value)) {
+      setFieldError(fieldId, rule.message);
+      if (!firstErrorId) firstErrorId = fieldId;
+    } else {
+      clearFieldError(fieldId);
+    }
+  }
+
+  if (firstErrorId) {
+    document.getElementById(firstErrorId).focus();
+  } else {
+    e.target.submit();
+  }
+}
+
+document.querySelector("form").addEventListener("submit", validateForm);</pre>
+      </div>
+
+      <h4>CSS — style du champ en erreur</h4>
+      <div class="code-block">
+        <div class="code-block-label after">Exemple</div>
+        <pre>.error-msg {
+  color: #C62828;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #C62828;
+  outline: 2px solid #C62828;
+  outline-offset: 1px;
+}</pre>
+      </div>
+    </div>
+
+        <div class="toolkit-subsection">
+      <h3>Valeurs de l'attribut autocomplete les plus utilisées</h3>
+      <h4>Informations personnelles</h4>
+      <ul>
+        <li><span class="aria-tag">given-name</span> — prénom</li>
+        <li><span class="aria-tag">family-name</span> — nom</li>
+        <li><span class="aria-tag">email</span></li>
+        <li><span class="aria-tag">organization</span></li>
+        <li><span class="aria-tag">tel</span></li>
+      </ul>
+      <h4>Adresse postale</h4>
+      <ul>
+        <li><span class="aria-tag">street-address</span></li>
+        <li><span class="aria-tag">address-line1</span>, <span class="aria-tag">address-line2</span></li>
+        <li><span class="aria-tag">address-level1</span> — région</li>
+        <li><span class="aria-tag">address-level2</span> — ville</li>
+        <li><span class="aria-tag">postal-code</span></li>
+        <li><span class="aria-tag">country</span></li>
+      </ul>
+      <h4>Mots de passe</h4>
+      <ul>
+        <li><span class="aria-tag">new-password</span> — création</li>
+        <li><span class="aria-tag">current-password</span> — connexion</li>
+      </ul>
+    </div>
+
+    <div class="toolkit-subsection" id="tk-aria">
+      <h3>Les attributs ARIA</h3>
+
+      <h4><span class="aria-tag">role="status"</span></h4>
+      <p>Indique que la zone contient un message de statut non urgent (confirmations, mises à jour). Informe les technologies d'assistance de la nature informationnelle de la zone. Équivalent implicite de <span class="aria-tag">aria-live="polite"</span>.</p>
+      <p class="toolkit-example">Exemples d'usage : « Enregistré », « 2 produits dans le panier », « Slide 2 sur 3 ».</p>
+
+      <h4><span class="aria-tag">aria-live="polite"</span></h4>
+      <p>Indique aux lecteurs d'écran d'annoncer les changements dans une zone dynamique. La valeur <code>polite</code> signifie que l'annonce attend la fin de la lecture en cours, sans interrompre l'utilisateur. Utiliser <span class="aria-tag">aria-live="assertive"</span> uniquement pour les urgences.</p>
+
+      <h4><span class="aria-tag">aria-expanded</span></h4>
+      <p>Indique l'état ouvert (<code>true</code>) ou fermé (<code>false</code>) d'un composant pliable (accordéon, menu déroulant). Doit être mis à jour dynamiquement via JavaScript à chaque interaction.</p>
+
+      <h4><span class="aria-tag">aria-controls</span></h4>
+      <p>Référence l'identifiant (<code>id</code>) du contenu contrôlé par un bouton. Permet aux technologies d'assistance de naviguer directement vers le contenu associé.</p>
+
+      <h4><span class="aria-tag">class="sr-only"</span></h4>
+      <p>Convention CSS permettant de masquer visuellement un élément tout en le conservant dans le flux d'accessibilité — les lecteurs d'écran le lisent, les utilisateurs voyants ne le voient pas.</p>
+      <p>À ne pas confondre avec <span class="aria-tag">display: none</span> ou <span class="aria-tag">visibility: hidden</span> qui masquent l'élément à la fois visuellement <strong>et</strong> aux technologies d'assistance.</p>
+
+      <h4>Quand l'utiliser</h4>
+      <ul>
+        <li><strong>Compléter un intitulé visuel insuffisant</strong> — ex. un bouton avec une icône seule : <code>&lt;button&gt;&lt;svg .../&gt;&lt;span class="sr-only"&gt;Fermer&lt;/span&gt;&lt;/button&gt;</code></li>
+        <li><strong>Contextualiser un lien ambigu</strong> — ex. plusieurs liens « Lire la suite » sur une même page : <code>&lt;a href="..."&gt;Lire la suite &lt;span class="sr-only"&gt;de l'article : Nouveau guide numérique&lt;/span&gt;&lt;/a&gt;</code></li>
+        <li><strong>Indiquer un champ obligatoire</strong> sans astérisque visible seul : <code>&lt;label&gt;Prénom &lt;span class="sr-only"&gt;(obligatoire)&lt;/span&gt;&lt;/label&gt;</code></li>
+        <li><strong>Titrer une région sans titre visible</strong> — ex. une <code>&lt;section&gt;</code> dont le titre est purement graphique : <code>&lt;h2 class="sr-only"&gt;Chiffres clés&lt;/h2&gt;</code></li>
+        <li><strong>Annoncer un changement de contexte</strong> — ex. avertir qu'un lien ouvre un nouvel onglet quand l'information ne figure pas dans l'intitulé visible.</li>
+      </ul>
+
+      <h4>Quand ne pas l'utiliser</h4>
+      <ul>
+        <li>Pour masquer du contenu qui n'a pas de raison d'être restitué aux AT — utiliser <span class="aria-tag">aria-hidden="true"</span> à la place.</li>
+        <li>Pour remplacer un vrai label visible — si un champ mérite une étiquette, celle-ci doit être visible pour tous les utilisateurs.</li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-block-label after">Implémentation CSS</div>
+        <pre>.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}</pre>
+      </div>
+
+      <h4><span class="aria-tag">aria-current="page"</span></h4>
+      <p>À utiliser dans les éléments de navigation pour indiquer la page active. Annoncé par les lecteurs d'écran pour situer l'utilisateur dans la structure de navigation.</p>
+    </div>
+
+  </div>
+</div>
+
+    
+<div class="toolkit-section" id="tk-ressources">
+  <div class="toolkit-header"><h2>Ressources utiles</h2></div>
+  <div class="toolkit-body">
+    <div class="toolkit-subsection">
+      <ul>
+        <li>
+          <a href="https://www.systeme-de-design.gouv.fr/version-courante/fr/composants/liens-d-evitement/code-des-liens-d-evitement"
+             target="_blank"
+             aria-label="Système de Design de l'État — Liens d'évitement (s'ouvre dans un nouvel onglet)">
+            Système de Design de l'État — Liens d'évitement
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3.org/WAI/ARIA/apg/patterns/"
+             target="_blank"
+             aria-label="WAI-ARIA Authoring Practices Guide — Patterns (s'ouvre dans un nouvel onglet)">
+            WAI-ARIA Authoring Practices Guide — Patterns
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</main>
+  </div>
+</div>
+
+
+
+
+<script src="app.js"></script>
+</body>
+</html>
