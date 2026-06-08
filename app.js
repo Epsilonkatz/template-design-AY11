@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const panel = document.getElementById(btn.getAttribute('aria-controls'));
       panel.classList.add('active');
 
-      // Boîte à outils : masquer le layout pour éviter l'espace vide
+      // Boîte à outils : réduire le layout pour éviter l'espace vide
       if (layout) {
         if (btn.id === 'btn-outils') {
           layout.classList.add('outils-active');
