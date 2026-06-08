@@ -115,7 +115,10 @@
     max-width: 1400px;
     margin: 100vh auto 0;
     transition: margin-top .45s cubic-bezier(.4,0,.2,1);
+    min-height: 0;
+    
   }
+ 
   .layout.compact {
     margin-top: 36px;
   }
