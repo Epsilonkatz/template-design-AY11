@@ -1,4 +1,4 @@
-/* /* ============================================================
+/* ============================================================
    Rapport RGAA 4.1.2
    app.js
    ============================================================ */
@@ -13,14 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hint) setTimeout(() => hint.classList.add('no-bounce'), 5000);
 
+  function shrinkHeader() {
+    if (shrunk) return;
+    header.classList.add('scrolled');
+    document.querySelector('.tabs-nav').classList.add('scrolled');
+    if (layout) layout.classList.add('compact');
+    if (hint) hint.classList.add('hidden');
+    shrunk = true;
+    window.removeEventListener('scroll', onScroll);
+  }
+
   function onScroll() {
-    if (!shrunk && window.scrollY > window.innerHeight * 0.05) {
-      header.classList.add('scrolled');
-      document.querySelector('.tabs-nav').classList.add('scrolled');
-      if (layout) layout.classList.add('compact');
-      if (hint) hint.classList.add('hidden');
-      shrunk = true;
-      window.removeEventListener('scroll', onScroll);
+    if (window.scrollY > window.innerHeight * 0.05) {
+      shrinkHeader();
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -43,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const panel = document.getElementById(btn.getAttribute('aria-controls'));
       panel.classList.add('active');
       panel.focus();
+
+      // Si le header n'a pas encore rétréci, le faire au clic sur un onglet
+      // (l'utilisateur a interagi, le contenu doit être accessible)
+      shrinkHeader();
+
+      // Remonter en haut de page à chaque changement d'onglet
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Navigation clavier entre onglets (flèches gauche/droite)
