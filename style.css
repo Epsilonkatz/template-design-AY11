@@ -115,12 +115,19 @@
     max-width: 1400px;
     margin: 100vh auto 0;
     transition: margin-top .45s cubic-bezier(.4,0,.2,1);
-    min-height: 0;
-    
   }
- 
   .layout.compact {
     margin-top: 36px;
+  }
+  /* ── Layout masqué quand Boîte à outils active ── */
+  .layout.outils-active {
+    min-height: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  /* ── Boîte à outils : pas de padding sur le main parent ── */
+  #tab-outils.active {
+    margin: -32px -32px -80px;
   }
   .layout-inner {
   grid-template-columns: 220px 1fr;
@@ -334,12 +341,14 @@
     color: var(--c-text);
     line-height: 1.75;
   }
-  .nc-section-content ul {
+  .nc-section-content ul,
+  .nc-section-content ol {
     padding-left: 20px;
     margin-top: 6px;
+    margin-bottom: 6px;
   }
   .nc-section-content li {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .nc-section-content p + p { margin-top: 8px; }
 
