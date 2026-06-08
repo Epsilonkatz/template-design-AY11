@@ -111,7 +111,6 @@
   .layout {
     display: grid;
     grid-template-columns: 260px 1fr;
-    min-height: 100vh;
     max-width: 1400px;
     margin: 100vh auto 0;
     transition: margin-top .45s cubic-bezier(.4,0,.2,1);
@@ -119,11 +118,20 @@
   .layout.compact {
     margin-top: 36px;
   }
-  /* ── Layout masqué quand Boîte à outils active ── */
+  /* ── Layout réduit quand Boîte à outils active ── */
   .layout.outils-active {
     min-height: 0;
-    height: 0;
-    overflow: hidden;
+  }
+  .layout.outils-active > nav.sidebar {
+    display: none;
+  }
+  .layout.outils-active > main {
+    min-height: 0;
+    padding: 0;
+  }
+  /* ── Boîte à outils hors du layout ── */
+  #tab-outils.active {
+    margin-top: 36px;
   }
   /* ── Boîte à outils : pas de padding sur le main parent ── */
   #tab-outils.active {
